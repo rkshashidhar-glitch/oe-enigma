@@ -35,3 +35,7 @@
 .Trashes
 ehthumbs.db
 Thumbs.db
+
+# Local OpenEdge configuration and compiled code #
+*.r
+.vscode/openedge.pf

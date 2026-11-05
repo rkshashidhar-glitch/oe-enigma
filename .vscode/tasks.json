@@ -1,0 +1,58 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "OpenEdge: compile active file",
+      "type": "process",
+      "command": "${env:DLC}/bin/_progres",
+      "windows": {
+        "command": "${env:DLC}\\bin\\_progres.exe"
+      },
+      "args": [
+        "-b",
+        "-p",
+        "${workspaceFolder}/tools/compile.p",
+        "-param",
+        "${file}"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "OpenEdge: compile active file with project parameters",
+      "type": "process",
+      "command": "${env:DLC}/bin/_progres",
+      "windows": {
+        "command": "${env:DLC}\\bin\\_progres.exe"
+      },
+      "args": [
+        "-b",
+        "-pf",
+        "${input:parameterFile}",
+        "-p",
+        "${workspaceFolder}/tools/compile.p",
+        "-param",
+        "${file}"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "group": "build",
+      "problemMatcher": []
+    }
+  ],
+  "inputs": [
+    {
+      "id": "parameterFile",
+      "type": "promptString",
+      "description": "Path to your local OpenEdge parameter file",
+      "default": ".vscode/openedge.pf"
+    }
+  ]
+}
